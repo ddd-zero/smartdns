@@ -443,6 +443,7 @@ int _dns_client_send_udp(struct dns_server_info *server_info, void *packet, int 
 	}
 
 	send_len = sendto(server_info->fd, packet, len, 0, NULL, 0);
+	tlog(TLOG_ERROR, "fd  = %d, packet = %p, len = %d, send_len = %d, errno = %d", server_info->fd, packet, len, send_len , errno)
 	if (send_len != len) {
 		goto errout;
 	}
